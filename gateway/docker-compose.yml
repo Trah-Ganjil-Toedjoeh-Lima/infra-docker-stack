@@ -52,7 +52,6 @@ services:
     networks:
       - ingress
     
-
   whoami:
     image: "traefik/whoami"
     container_name: "traefik-whoami"
@@ -63,6 +62,8 @@ services:
       - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)"
       - "traefik.http.routers.whoami.entrypoints=web"
       - "traefik.http.routers.whoami.middlewares=redirect-to-https@docker"
+    ports:
+      - 127.0.0.1:8001:80
     networks:
       - ingress
 

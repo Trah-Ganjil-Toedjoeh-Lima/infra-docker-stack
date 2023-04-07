@@ -3,16 +3,28 @@ version: "3.7"
 services:
   postgres:
     image: 'bitnami/postgresql:15'
-    container_name: postgres-db
+    container_name: ${POSTGRESQL_HOST}
     restart: unless-stopped
     ports:
-      - "127.0.0.1:5432:5432"
+      - "127.0.0.1:${POSTGRESQL_PORT}:${POSTGRESQL_PORT}"
     env_file:
       - .env
     volumes:
-      - ./postgresql_data:/bitnami/postgresql
+      - ./postgresql_data:/bi}tnami/postgresql
     networks:
       - gateway_ingress
+  
+  pgbouncer:
+    image: 'bitnami/pgbouncer:1'
+    container_name: postgres-bouncer
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6432:6432"
+    env_file:
+      - .env
+    environment:
+      - PGBOUNCER_AUTH_TYPE=scram-sha-256
+      - PGBOUNCER_IGNORE_STARTUP_PARAMETERS=extra_float_digits
 
 networks:
   gateway_ingress:

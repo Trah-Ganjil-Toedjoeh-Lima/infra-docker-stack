@@ -92,12 +92,6 @@ services:
       - elasticsearch
     restart: unless-stopped
 
-volumes:
-  elasticsearch_setup:
-    driver: local
-  elasticsearch_data:
-    driver: local
-
 networks:
   gateway_ingress:
     external: true

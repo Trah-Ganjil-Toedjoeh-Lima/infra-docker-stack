@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     volumes:
-      - ./postgresql_data:/bi}tnami/postgresql
+      - ./postgresql_data:/bitnami/postgresql
     networks:
       - gateway_ingress
   
@@ -25,6 +25,8 @@ services:
     environment:
       - PGBOUNCER_AUTH_TYPE=scram-sha-256
       - PGBOUNCER_IGNORE_STARTUP_PARAMETERS=extra_float_digits
+    networks:
+      - gateway_ingress
 
 networks:
   gateway_ingress:

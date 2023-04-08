@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+  minio:
+    container_name: minio
+    image: bitnami/minio:2023
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./minio_data:/data
+    env_file:
+      - .env
+    networks:
+      - gateway_ingress
+
+networks:
+  gateway_ingress:
+    external: true

@@ -16,7 +16,7 @@ down:
 
 clean:
 	./warning.sh
-	cd redis && rm -rf *_data
-	cd postgres && rm -rf *_data
-	cd minio && rm -rf *_data
-	cd elk-stack && rm -rf setup/data && rm -rf elasticsearch/data
+	cd redis && sudo rm -rf *_data
+	cd postgres && sudo rm -rf *_data
+	cd minio && sudo rm -rf *_data
+	cd elk-stack && sudo rm -rf setup/data && sudo rm -rf elasticsearch/data
